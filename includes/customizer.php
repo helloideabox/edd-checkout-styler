@@ -1195,7 +1195,7 @@ function gfs_register_customizer() {
 					),
 					'gfs_form_file_upload_style'	=> array(
 						'title'	=> __( 'File Upload', 'gfs' ),
-						'description'	=> __( 'Style the file upload fields of a form by adding size, colors and border.', 'gfs' ),
+						'description'	=> __( 'Style the file upload fields of a form by adding colors, border and padding.', 'gfs' ),
 						'fields'	=> array(
 							'gfs_file_bg_color' => array(
 		                        'setting'    => array(
@@ -1227,32 +1227,6 @@ function gfs_register_customizer() {
 									'property'		=> 'color'
 								),
 		                    ),
-							'gfs_file_border_style' => array(
-		                        'setting'    => array(
-		                            'default' => 'none',
-									'transport'    => 'postMessage'
-		                        ),
-		                        'control'    => array(
-		                            'type'          => 'select',
-		                            'label'         => __('Border Style', 'gfs'),
-									'choices'		=> array(
-										'none'			=> __('None', 'gfs'),
-										'solid'			=> __('Solid', 'gfs'),
-										'dashed'		=> __('Dashed', 'gfs'),
-										'dotted'		=> __('Dotted', 'gfs')
-									),
-		                        ),
-								'toggle'	=> array(
-									'solid'		=> array( 'gfs_file_border_width', 'gfs_file_border_color' ),
-									'dashed'	=> array( 'gfs_file_border_width', 'gfs_file_border_color' ),
-									'dotted'	=> array( 'gfs_file_border_width', 'gfs_file_border_color' ),
-								),
-								'preview'       => array(
-									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
-									'property'		=> 'border-style'
-								)
-							),
 							'gfs_file_border_width' => array(
 		                        'setting'    => array(
 		                            'default' => '',
@@ -1291,6 +1265,26 @@ function gfs_register_customizer() {
 									'property'		=> 'border-color'
 								),
 		                    ),
+							'gfs_file_border_style' => array(
+		                        'setting'    => array(
+		                            'default' => 'solid',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'select',
+		                            'label'         => __('Border Style', 'gfs'),
+									'choices'		=> array(
+										'solid'			=> __('Solid', 'gfs'),
+										'dashed'		=> __('Dashed', 'gfs'),
+										'dotted'		=> __('Dotted', 'gfs')
+									),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+									'property'		=> 'border-style'
+								)
+							),
 							'gfs_file_padding' => array(
 		                        'setting'    => array(
 									'default' => array(
@@ -1350,10 +1344,10 @@ function gfs_register_customizer() {
 									'transport'    => 'postMessage'
                                 ),
                                 'control'    => array(
-                                    'type'              => 'radio',
-                                        'label'             => __('Full Width?', 'gfs'),
-                                    'choices'           => array(
-                                        '100%'          	=> __('Yes', 'gfs'),
+                                    'type'          => 'radio',
+                                        'label'         => __('Full Width?', 'gfs'),
+                                    'choices'		=> array(
+                                        '100%'          => __('Yes', 'gfs'),
                                         'auto'        	=> __('No', 'gfs')
                                     ),
                                 ),
@@ -2276,9 +2270,7 @@ function gfs_output_styles() {
 		div.gform_wrapper .gfield input[type=file] {
 			background-color: <?php echo IBCustomizer::get_mod('gfs_file_bg_color') ? IBCustomizer::get_mod('gfs_file_bg_color') : 'transparent'; ?>;
 			<?php if( IBCustomizer::get_mod('gfs_file_text_color') ) { ?>color: <?php echo IBCustomizer::get_mod('gfs_file_text_color'); ?>;<?php } ?>
-			<?php if( IBCustomizer::get_mod('gfs_file_border_width') >= 0 ) { ?>
-			border-width: <?php echo IBCustomizer::get_mod('gfs_file_border_width'); ?>px;
-			<?php } ?>
+			border-width: <?php echo ( IBCustomizer::get_mod('gfs_file_border_width') !== '' ) ? IBCustomizer::get_mod('gfs_file_border_width') : 0; ?>px;
 			<?php if( IBCustomizer::get_mod('gfs_file_border_color') ) { ?>
 			border-color: <?php echo IBCustomizer::get_mod('gfs_file_border_color'); ?>;
 			<?php } ?>
