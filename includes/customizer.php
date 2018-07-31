@@ -1072,6 +1072,129 @@ function gfs_register_customizer() {
 		                    ),
 						)
 					),
+					'gfs_form_radio_checkbox_style'	=> array(
+						'title'	=> __( 'Radio & Checkbox', 'gfs' ),
+						'description'	=> __( 'Style the radio and checkbox fields of a form by adding size, colors and border.', 'gfs' ),
+						'fields'	=> array(
+							'gfs_radio_cb_style' => array(
+		                        'setting'    => array(
+		                            'default' => 'no',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'select',
+		                            'label'         => __('Enable Custom Style', 'gfs'),
+									'choices'		=> array(
+										'yes'			=> __('Yes', 'gfs'),
+										'no'			=> __('No', 'gfs'),
+									),
+		                        ),
+								'toggle'	=> array(
+									'yes'	=> array(
+										'fields'	=> array( 'gfs_radio_cb_size', 'gfs_radio_cb_color', 'gfs_radio_cb_checked_color', 'gfs_radio_cb_border_width', 'gfs_radio_cb_border_color', 'gfs_radio_cb_radius', 'gfs_radio_cb_checkbox_radius' )
+									)
+								)
+							),
+							'gfs_radio_cb_size' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'gfs_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Size (px)', 'gfs' ),
+									'class'			=> 'IBCustomizerControl',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 20,
+		                                'step'               => 1 
+		                            ),
+		                        ),
+		                    ),
+							'gfs_radio_cb_color' => array(
+		                        'setting'    => array(
+		                            'default' => '#dddddd',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'color',
+		                            'label'         => __('Color', 'gfs'),
+		                        ),
+		                    ),
+							'gfs_radio_cb_checked_color' => array(
+		                        'setting'    => array(
+		                            'default' => '#999999',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'color',
+		                            'label'         => __('Checked Color', 'gfs'),
+		                        ),
+		                    ),
+							'gfs_radio_cb_border_width' => array(
+		                        'setting'    => array(
+		                            'default' => '1',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'gfs_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __('Border Width (px)', 'gfs'),
+									'class'			=> 'IBCustomizerControl',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 10,
+		                                'step'                 => 1
+		                            ),
+		                        ),
+		                    ),
+							'gfs_radio_cb_border_color' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'color',
+		                            'label'         => __('Border Color', 'gfs'),
+		                        ),
+		                    ),
+							'gfs_radio_cb_radius' => array(
+		                        'setting'    => array(
+		                            'default' => 50,
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'gfs_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __('Radio Border Radius (px)', 'gfs'),
+									'class'			=> 'IBCustomizerControl',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 100,
+		                                'step'                 => 1
+		                            ),
+		                        ),
+		                    ),
+							'gfs_radio_cb_checkbox_radius' => array(
+		                        'setting'    => array(
+		                            'default' => 0,
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'gfs_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __('Checkbox Border Radius (px)', 'gfs'),
+									'class'			=> 'IBCustomizerControl',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 100,
+		                                'step'                 => 1
+		                            ),
+		                        ),
+		                    ),
+						),
+					),
 					'gfs_form_button_style'	=> array(
 						'title'	=> __( 'Button', 'gfs' ),
 						'description'	=> __( 'Customize the form button with colors, border, even change the hover state colors.', 'gfs' ),
@@ -1941,6 +2064,67 @@ function gfs_output_styles() {
 			background-color: <?php echo IBCustomizer::get_mod('gfs_button_bg_hover_color'); ?>;
 			<?php } ?>
 		}
+
+		<?php if ( 'yes' == IBCustomizer::get_mod('gfs_radio_cb_style') ) : ?>
+			/* Radio & Checkbox */
+			div.gform_wrapper .gfield_radio li input[type=radio],
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox],
+			div.gform_wrapper .gfield_radio li input[type=radio]:focus,
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				outline: none;
+				margin-top: 0 !important;
+				<?php if ( IBCustomizer::get_mod('gfs_radio_cb_size') >= 0 ) : ?>
+					width: <?php echo IBCustomizer::get_mod('gfs_radio_cb_size'); ?>px !important;
+					height: <?php echo IBCustomizer::get_mod('gfs_radio_cb_size'); ?>px !important;
+				<?php endif; ?>
+				<?php if ( ! empty( IBCustomizer::get_mod('gfs_radio_cb_color') ) ) : ?>
+					background: <?php echo IBCustomizer::get_mod('gfs_radio_cb_color'); ?>;
+					background-color: <?php echo IBCustomizer::get_mod('gfs_radio_cb_color'); ?>;
+				<?php endif; ?>
+				<?php if ( IBCustomizer::get_mod('gfs_radio_cb_border_width') >= 0 && ! empty( IBCustomizer::get_mod('gfs_radio_cb_border_color') ) ) : ?>
+					border: <?php echo IBCustomizer::get_mod('gfs_radio_cb_border_width'); ?>px solid <?php echo IBCustomizer::get_mod('gfs_radio_cb_border_color'); ?>;
+				<?php endif; ?>
+				padding: 2px;
+			}
+			div.gform_wrapper .gfield_radio li input[type=radio],
+			div.gform_wrapper .gfield_radio li input[type=radio]:focus,
+			div.gform_wrapper .gfield_radio li input[type=radio]:before,
+			div.gform_wrapper .gfield_radio li input[type=radio]:focus:before {
+				<?php if ( IBCustomizer::get_mod('gfs_radio_cb_radius') >= 0 ) : ?>
+					border-radius: <?php echo IBCustomizer::get_mod('gfs_radio_cb_radius'); ?>px;
+				<?php endif; ?>
+			}
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox],
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus,
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:before,
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus:before {
+				<?php if ( IBCustomizer::get_mod('gfs_radio_cb_checkbox_radius') >= 0 ) : ?>
+					border-radius: <?php echo IBCustomizer::get_mod('gfs_radio_cb_checkbox_radius'); ?>px;
+				<?php endif; ?>
+			}
+			div.gform_wrapper .gfield_radio li input[type=radio]:before,
+			div.gform_wrapper .gfield_radio li input[type=radio]:focus:before,
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:before,
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				margin: 0;
+				display: block;
+			}
+			div.gform_wrapper .gfield_radio li input[type=radio]:checked:before,
+			div.gform_wrapper .gfield_radio li input[type=radio]:focus:checked:before,
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:checked:before,
+			div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus:checked:before {
+				<?php if ( ! empty( IBCustomizer::get_mod('gfs_radio_cb_checked_color') ) ) : ?>
+					background: <?php echo IBCustomizer::get_mod('gfs_radio_cb_checked_color'); ?>;
+					background-color: <?php echo IBCustomizer::get_mod('gfs_radio_cb_checked_color'); ?>;
+				<?php endif; ?>
+			}
+		<?php endif; ?>
 
 		div.gform_wrapper div.validation_error {
 			<?php if( IBCustomizer::get_mod('gfs_error_validation') ) { ?>
