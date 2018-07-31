@@ -1090,9 +1090,7 @@ function gfs_register_customizer() {
 									),
 		                        ),
 								'toggle'	=> array(
-									'yes'	=> array(
-										'fields'	=> array( 'gfs_radio_cb_size', 'gfs_radio_cb_color', 'gfs_radio_cb_checked_color', 'gfs_radio_cb_border_width', 'gfs_radio_cb_border_color', 'gfs_radio_cb_radius', 'gfs_radio_cb_checkbox_radius' )
-									)
+									'yes'	=> array( 'gfs_radio_cb_size', 'gfs_radio_cb_color', 'gfs_radio_cb_checked_color', 'gfs_radio_cb_border_width', 'gfs_radio_cb_border_color', 'gfs_radio_cb_radius', 'gfs_radio_cb_checkbox_radius' )
 								)
 							),
 							'gfs_radio_cb_size' => array(
@@ -1192,6 +1190,153 @@ function gfs_register_customizer() {
 		                                'step'                 => 1
 		                            ),
 		                        ),
+		                    ),
+						),
+					),
+					'gfs_form_file_upload_style'	=> array(
+						'title'	=> __( 'File Upload', 'gfs' ),
+						'description'	=> __( 'Style the file upload fields of a form by adding size, colors and border.', 'gfs' ),
+						'fields'	=> array(
+							'gfs_file_bg_color' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'color',
+		                            'label'         => __('Background Color', 'gfs'),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+									'property'		=> 'background-color'
+								),
+		                    ),
+							'gfs_file_text_color' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'color',
+		                            'label'         => __('Color', 'gfs'),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+									'property'		=> 'color'
+								),
+		                    ),
+							'gfs_file_border_style' => array(
+		                        'setting'    => array(
+		                            'default' => 'none',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'select',
+		                            'label'         => __('Border Style', 'gfs'),
+									'choices'		=> array(
+										'none'			=> __('None', 'gfs'),
+										'solid'			=> __('Solid', 'gfs'),
+										'dashed'		=> __('Dashed', 'gfs'),
+										'dotted'		=> __('Dotted', 'gfs')
+									),
+		                        ),
+								'toggle'	=> array(
+									'solid'		=> array( 'gfs_file_border_width', 'gfs_file_border_color' ),
+									'dashed'	=> array( 'gfs_file_border_width', 'gfs_file_border_color' ),
+									'dotted'	=> array( 'gfs_file_border_width', 'gfs_file_border_color' ),
+								),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+									'property'		=> 'border-style'
+								)
+							),
+							'gfs_file_border_width' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'gfs_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __('Border Width (px)', 'gfs'),
+									'class'			=> 'IBCustomizerControl',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 100,
+		                                'step'                 => 1
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+									'property'		=> 'border-width',
+									'unit'			=> 'px'
+								),
+		                    ),
+							'gfs_file_border_color' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'color',
+		                            'label'         => __('Border Color', 'gfs'),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+									'property'		=> 'border-color'
+								),
+		                    ),
+							'gfs_file_padding' => array(
+		                        'setting'    => array(
+									'default' => array(
+		                                'top'        => '',
+		                                'bottom'    => '',
+		                                'left'        => '',
+		                                'right'        => ''
+		                            ),
+	                            	'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-multitext',
+		                            'label'         => __('Padding (px)', 'gfs'),
+		                            'class' 		=> 'IBCustomizerControl',
+									'choices'            => array(
+		                                'top'            => __('Top', 'gfs'),
+		                                'bottom'         => __('Bottom', 'gfs'),
+		                                'left'           => __('Left', 'gfs'),
+		                                'right'          => __('Right', 'gfs')
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'rules'			=> array(
+										'top'		=> array(
+											'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+											'property'		=> 'padding-top',
+											'unit'			=> 'px'
+										),
+										'bottom'	=> array(
+											'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+											'property'		=> 'padding-bottom',
+											'unit'			=> 'px'
+										),
+										'left'		=> array(
+											'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+											'property'		=> 'padding-left',
+											'unit'			=> 'px'
+										),
+										'right'		=> array(
+											'selector'      => 'div.gform_wrapper .gfield input[type=file]',
+											'property'		=> 'padding-right',
+											'unit'			=> 'px'
+										)
+									)
+								)
 		                    ),
 						),
 					),
@@ -1664,6 +1809,7 @@ function gfs_output_styles() {
 	$input_padding 		= IBCustomizer::get_mod('gfs_inputs_padding', true);
 	$input_border		= IBCustomizer::get_mod('gfs_input_border_width', true);
 	$button_padding 	= IBCustomizer::get_mod('gfs_button_padding', true);
+	$file_padding 		= IBCustomizer::get_mod('gfs_file_padding', true);
 	 ?>
 	<style type="text/css">
 		div.gform_wrapper {
@@ -2125,6 +2271,33 @@ function gfs_output_styles() {
 				<?php endif; ?>
 			}
 		<?php endif; ?>
+
+		/* File Upload */
+		div.gform_wrapper .gfield input[type=file] {
+			background-color: <?php echo IBCustomizer::get_mod('gfs_file_bg_color') ? IBCustomizer::get_mod('gfs_file_bg_color') : 'transparent'; ?>;
+			<?php if( IBCustomizer::get_mod('gfs_file_text_color') ) { ?>color: <?php echo IBCustomizer::get_mod('gfs_file_text_color'); ?>;<?php } ?>
+			<?php if( IBCustomizer::get_mod('gfs_file_border_width') >= 0 ) { ?>
+			border-width: <?php echo IBCustomizer::get_mod('gfs_file_border_width'); ?>px;
+			<?php } ?>
+			<?php if( IBCustomizer::get_mod('gfs_file_border_color') ) { ?>
+			border-color: <?php echo IBCustomizer::get_mod('gfs_file_border_color'); ?>;
+			<?php } ?>
+			<?php if( IBCustomizer::get_mod('gfs_file_border_style') ) { ?>
+			border-style: <?php echo IBCustomizer::get_mod('gfs_file_border_style'); ?>;
+			<?php } ?>
+			<?php if( $file_padding['top'] >= 0 ) { ?>
+			padding-top: <?php echo $file_padding['top']; ?>px;
+			<?php } ?>
+			<?php if( $file_padding['bottom'] >= 0 ) { ?>
+			padding-bottom: <?php echo $file_padding['bottom']; ?>px;
+			<?php } ?>
+			<?php if( $file_padding['left'] >= 0 ) { ?>
+			padding-left: <?php echo $file_padding['left']; ?>px;
+			<?php } ?>
+			<?php if( $file_padding['right'] >= 0 ) { ?>
+			padding-right: <?php echo $file_padding['right']; ?>px;
+			<?php } ?>
+		}
 
 		div.gform_wrapper div.validation_error {
 			<?php if( IBCustomizer::get_mod('gfs_error_validation') ) { ?>
