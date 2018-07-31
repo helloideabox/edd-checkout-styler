@@ -1854,14 +1854,14 @@ function gfs_output_styles() {
 		<?php } ?>
 
 		div.gform_wrapper .gfield .gfield_description {
-		    <?php if( IBCustomizer::get_mod('input_desc_font_size') ) { ?>
-		    font-size: <?php echo IBCustomizer::get_mod('input_desc_font_size'); ?>px;
+		    <?php if( IBCustomizer::get_mod('gfs_input_desc_font_size') ) { ?>
+		    font-size: <?php echo IBCustomizer::get_mod('gfs_input_desc_font_size'); ?>px;
 		    <?php } ?>
-		    <?php if( IBCustomizer::get_mod('input_desc_color') ) { ?>
-		    color: <?php echo IBCustomizer::get_mod('input_desc_color'); ?>;
+		    <?php if( IBCustomizer::get_mod('gfs_input_desc_color') ) { ?>
+		    color: <?php echo IBCustomizer::get_mod('gfs_input_desc_color'); ?>;
 		    <?php } ?>
-		    <?php if( IBCustomizer::get_mod('input_desc_line_height') ) { ?>
-		    line-height: <?php echo IBCustomizer::get_mod('input_desc_line_height'); ?>;
+		    <?php if( IBCustomizer::get_mod('gfs_input_desc_line_height') ) { ?>
+		    line-height: <?php echo IBCustomizer::get_mod('gfs_input_desc_line_height'); ?>;
 		    <?php } ?>
 		}
 
