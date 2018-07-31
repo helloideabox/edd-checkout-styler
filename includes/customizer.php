@@ -715,6 +715,46 @@ function gfs_register_customizer() {
 									'property'		=> 'width'
 								)
                             ),
+							'gfs_input_height'      => array(
+                                'setting'    => array(
+                                    'default' => 'auto',
+									'transport'    => 'postMessage'
+                                ),
+                                'control'    => array(
+                                    'type'          => 'radio',
+                                        'label'         => __('Height', 'gfs'),
+                                    'choices'       => array(
+                                        'auto'          => __('Auto', 'gfs'),
+                                        'custom'        => __('Custom', 'gfs')
+                                    ),
+                                ),
+								'toggle'	=> array(
+									'custom'	=> array('gfs_input_height_custom')	
+								)
+                            ),
+							'gfs_input_height_custom' => array(
+		                        'setting'    => array(
+		                            'default' => 45,
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'gfs_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __('Height (px)', 'gfs'),
+									'class'			=> 'IBCustomizerControl',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 100,
+		                                'step'               => 1
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]), div.gform_wrapper .gfield select',
+									'property'		=> 'height',
+									'unit'			=> 'px'
+								)
+		                    ),
 							'gfs_input_alignment' => array(
 		                        'setting'    => array(
 		                            'default' => 'left',
@@ -2016,6 +2056,13 @@ function gfs_output_styles() {
 
 		div.gform_wrapper .ginput_complex input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=image]):not([type=file]) {
 		    width: 100%;
+		}
+
+		div.gform_wrapper .gfield input:not([type='radio']):not([type='checkbox']):not([type='submit']):not([type='button']):not([type='image']):not([type='file']),
+		div.gform_wrapper .gfield select {
+			<?php if ( IBCustomizer::get_mod('gfs_input_height') == 'custom' ) { ?>
+				height: <?php echo IBCustomizer::get_mod('gfs_input_height_custom'); ?>px;
+			<?php } ?>
 		}
 		
 		<?php if( IBCustomizer::get_mod('gfs_input_placeholder') == 'no' && IBCustomizer::get_mod('gfs_input_placeholder_color') != '' ) { ?>
