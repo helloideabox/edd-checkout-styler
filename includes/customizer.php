@@ -1593,6 +1593,16 @@ function gfs_register_customizer() {
 									)
 								)
 		                    ),
+							'gfs_button_border_separator' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-line',
+									'class'			=> 'IBCustomizerControl',
+		                            'label'         => '',
+		                        ),
+							),
 							'gfs_button_border_width' => array(
 		                        'setting'    => array(
 		                            'default' => 0,
@@ -2162,6 +2172,11 @@ function gfs_output_styles() {
 		    border-color: <?php echo IBCustomizer::get_mod('gfs_input_focus_color'); ?>;
 		}
 		<?php } ?>
+
+		div.gform_wrapper .top_label input.medium,
+		div.gform_wrapper .top_label select.medium {
+			width: <?php echo (IBCustomizer::get_mod('gfs_input_width') == '100%') ? '100%' : '49%'; ?>;
+		}
 
 		div.gform_wrapper .gfield .gfield_description {
 		    <?php if( IBCustomizer::get_mod('gfs_input_desc_font_size') ) { ?>
