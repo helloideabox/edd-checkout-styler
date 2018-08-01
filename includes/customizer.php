@@ -129,6 +129,21 @@ function gfs_register_customizer() {
 									'property'		=> 'opacity',
 								)
 		                    ),
+							'gfs_product_price_color' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'color',
+		                            'label'         => __('Product Price Color', 'gfs'),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper span.ginput_product_price, div.gform_wrapper .gfield_price .ginput_container_total span',
+									'property'		=> 'color'
+								)
+		                    ),
 						)
 					),
 					'gfs_form_padding_margin'	=> array(
@@ -703,7 +718,7 @@ function gfs_register_customizer() {
                                 ),
                                 'control'    => array(
                                     'type'              => 'radio',
-                                        'label'             => __('Full Width?', 'gfs'),
+                                    'label'             => __('Full Width?', 'gfs'),
                                     'choices'           => array(
                                         '100%'          => __('Yes', 'gfs'),
                                         'no'        => __('No', 'gfs')
@@ -722,7 +737,7 @@ function gfs_register_customizer() {
                                 ),
                                 'control'    => array(
                                     'type'          => 'radio',
-                                        'label'         => __('Height', 'gfs'),
+                                    'label'         => __('Height', 'gfs'),
                                     'choices'       => array(
                                         'auto'          => __('Auto', 'gfs'),
                                         'custom'        => __('Custom', 'gfs')
@@ -1015,7 +1030,7 @@ function gfs_register_customizer() {
                                 ),
                                 'control'    => array(
                                     'type'              => 'select',
-                                        'label'             => __('Hide Placeholder?', 'gfs'),
+                                    'label'             => __('Hide Placeholder?', 'gfs'),
                                     'choices'           => array(
                                         'yes'          => __('Yes', 'gfs'),
                                         'no'        => __('No', 'gfs')
@@ -1136,7 +1151,6 @@ function gfs_register_customizer() {
 							'gfs_radio_cb_size' => array(
 		                        'setting'    => array(
 		                            'default' => '',
-									'transport'    => 'postMessage',
 									'sanitize_callback' => 'gfs_sanitize_integer',
 		                        ),
 		                        'control'    => array(
@@ -1159,6 +1173,11 @@ function gfs_register_customizer() {
 		                            'type'          => 'color',
 		                            'label'         => __('Color', 'gfs'),
 		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield_radio li input[type=radio], div.gform_wrapper .gfield_checkbox li input[type=checkbox], div.gform_wrapper .gfield_radio li input[type=radio]:focus, div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus',
+									'property'		=> 'background-color',
+								)
 		                    ),
 							'gfs_radio_cb_checked_color' => array(
 		                        'setting'    => array(
@@ -1169,6 +1188,11 @@ function gfs_register_customizer() {
 		                            'type'          => 'color',
 		                            'label'         => __('Checked Color', 'gfs'),
 		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield_radio li input[type=radio]:checked:before, div.gform_wrapper .gfield_radio li input[type=radio]:focus:checked:before, div.gform_wrapper .gfield_checkbox li input[type=checkbox]:checked:before, div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus:checked:before',
+									'property'		=> 'background-color',
+								)
 		                    ),
 							'gfs_radio_cb_border_width' => array(
 		                        'setting'    => array(
@@ -1186,6 +1210,12 @@ function gfs_register_customizer() {
 		                                'step'                 => 1
 		                            ),
 		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield_radio li input[type=radio], div.gform_wrapper .gfield_checkbox li input[type=checkbox], div.gform_wrapper .gfield_radio li input[type=radio]:focus, div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus',
+									'property'		=> 'border-width',
+									'unit'			=> 'px'
+								)
 		                    ),
 							'gfs_radio_cb_border_color' => array(
 		                        'setting'    => array(
@@ -1196,6 +1226,11 @@ function gfs_register_customizer() {
 		                            'type'          => 'color',
 		                            'label'         => __('Border Color', 'gfs'),
 		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield_radio li input[type=radio], div.gform_wrapper .gfield_checkbox li input[type=checkbox], div.gform_wrapper .gfield_radio li input[type=radio]:focus, div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus',
+									'property'		=> 'border-color',
+								)
 		                    ),
 							'gfs_radio_cb_radius' => array(
 		                        'setting'    => array(
@@ -1213,6 +1248,12 @@ function gfs_register_customizer() {
 		                                'step'                 => 1
 		                            ),
 		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield_radio li input[type=radio], div.gform_wrapper .gfield_radio li input[type=radio]:focus, div.gform_wrapper .gfield_radio li input[type=radio]:before, div.gform_wrapper .gfield_radio li input[type=radio]:focus:before',
+									'property'		=> 'border-radius',
+									'unit'			=> 'px'
+								)
 		                    ),
 							'gfs_radio_cb_checkbox_radius' => array(
 		                        'setting'    => array(
@@ -1230,6 +1271,12 @@ function gfs_register_customizer() {
 		                                'step'                 => 1
 		                            ),
 		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.gform_wrapper .gfield_checkbox li input[type=checkbox], div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus, div.gform_wrapper .gfield_checkbox li input[type=checkbox]:before, div.gform_wrapper .gfield_checkbox li input[type=checkbox]:focus:before',
+									'property'		=> 'border-radius',
+									'unit'			=> 'px'
+								)
 		                    ),
 						),
 					),
@@ -1385,7 +1432,7 @@ function gfs_register_customizer() {
                                 ),
                                 'control'    => array(
                                     'type'          => 'radio',
-                                        'label'         => __('Full Width?', 'gfs'),
+                                    'label'         => __('Full Width?', 'gfs'),
                                     'choices'		=> array(
                                         '100%'          => __('Yes', 'gfs'),
                                         'auto'        	=> __('No', 'gfs')
@@ -1393,7 +1440,7 @@ function gfs_register_customizer() {
                                 ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'width'
 								),
 								'toggle'		=> array(
@@ -1436,7 +1483,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'text-transform'
 								)
 							),
@@ -1458,7 +1505,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'letter-spacing',
 									'unit'			=> 'px'
 								)
@@ -1481,7 +1528,7 @@ function gfs_register_customizer() {
 								),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'font-size',
 									'unit'			=> 'px'
 								)
@@ -1497,7 +1544,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'color',
 								)
 		                    ),
@@ -1512,7 +1559,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'background-color',
 								)
 		                    ),
@@ -1527,7 +1574,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit]:hover, div.gform_wrapper .gform_page_footer input[type=button]:hover, div.gform_wrapper .gform_page_footer input[type=submit]:hover',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button:hover, div.gform_wrapper .gform_page_footer .button:hover',
 									'property'		=> 'color',
 								)
 		                    ),
@@ -1542,7 +1589,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit]:hover, div.gform_wrapper .gform_page_footer input[type=button]:hover, div.gform_wrapper .gform_page_footer input[type=submit]:hover',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button:hover, div.gform_wrapper .gform_page_footer .button:hover',
 									'property'		=> 'background-color',
 								)
 		                    ),
@@ -1571,22 +1618,22 @@ function gfs_register_customizer() {
 									'type'          => 'css',
 									'rules'			=> array(
 										'top'		=> array(
-											'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+											'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 											'property'		=> 'padding-top',
 											'unit'			=> 'px'
 										),
 										'bottom'	=> array(
-											'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+											'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 											'property'		=> 'padding-bottom',
 											'unit'			=> 'px'
 										),
 										'left'		=> array(
-											'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+											'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 											'property'		=> 'padding-left',
 											'unit'			=> 'px'
 										),
 										'right'		=> array(
-											'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+											'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 											'property'		=> 'padding-right',
 											'unit'			=> 'px'
 										)
@@ -1621,7 +1668,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'border-width',
 									'unit'			=> 'px'
 								)
@@ -1637,7 +1684,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'border-color'
 								)
 		                    ),
@@ -1659,7 +1706,7 @@ function gfs_register_customizer() {
 		                        ),
 								'preview'       => array(
 									'type'          => 'css',
-									'selector'      => 'div.gform_wrapper .gform_footer input[type=submit], div.gform_wrapper .gform_page_footer input[type=button], div.gform_wrapper .gform_page_footer input[type=submit]',
+									'selector'      => 'div.gform_wrapper .gform_footer .gform_button, div.gform_wrapper .gform_page_footer .button',
 									'property'		=> 'border-radius',
 									'unit'			=> 'px'
 								)
@@ -1989,6 +2036,13 @@ function gfs_output_styles() {
 			<?php } ?>
 		}
 
+		div.gform_wrapper span.ginput_product_price,
+		div.gform_wrapper .gfield_price .ginput_container_total span {
+			<?php if( IBCustomizer::get_mod('gfs_product_price_color') ) { ?>
+			color: <?php echo IBCustomizer::get_mod('gfs_product_price_color'); ?> !important;
+			<?php } ?>
+		}
+
 		div.gform_wrapper .gsection {
 			<?php if( IBCustomizer::get_mod('gfs_section_border_width') >= 0 ) { ?>
 			border-bottom-width: <?php echo IBCustomizer::get_mod('gfs_section_border_width'); ?>px;
@@ -2202,9 +2256,8 @@ function gfs_output_styles() {
 		div.gform_wrapper .gform_page_footer {
 			text-align: <?php echo IBCustomizer::get_mod('gfs_button_alignment'); ?>;
 		}
-		div.gform_wrapper .gform_footer input[type=submit],
-		div.gform_wrapper .gform_page_footer input[type=button],
-		div.gform_wrapper .gform_page_footer input[type=submit] {
+		div.gform_wrapper .gform_footer .gform_button,
+		div.gform_wrapper .gform_page_footer .button {
 			<?php if( IBCustomizer::get_mod('gfs_button_width') ) { ?>
 				width: <?php echo IBCustomizer::get_mod('gfs_button_width'); ?>;
 			<?php } ?>
@@ -2250,15 +2303,30 @@ function gfs_output_styles() {
 			<?php } ?>
 		}
 
+		div.gform_wrapper.gf_browser_ie .gform_footer .gform_button,
+		div.gform_wrapper.gf_browser_ie .gform_page_footer .button {
+			<?php if( $button_padding['top'] >= 0 ) { ?>
+			padding-top: <?php echo $button_padding['top']; ?>px;
+			<?php } ?>
+			<?php if( $button_padding['bottom'] >= 0 ) { ?>
+			padding-bottom: <?php echo $button_padding['bottom']; ?>px;
+			<?php } ?>
+			<?php if( $button_padding['left'] >= 0 ) { ?>
+			padding-left: <?php echo $button_padding['left']; ?>px;
+			<?php } ?>
+			<?php if( $button_padding['right'] >= 0 ) { ?>
+			padding-right: <?php echo $button_padding['right']; ?>px;
+			<?php } ?>
+		}
+
 		div.gform_wrapper .gform_footer input[type=submit]:last-child,
 		div.gform_wrapper .gform_page_footer input[type=button]:last-child,
 		div.gform_wrapper .gform_page_footer input[type=submit]:last-child {
 			margin-bottom: 0 !important;
 		}
 
-		div.gform_wrapper .gform_footer input[type=submit]:hover,
-		div.gform_wrapper .gform_page_footer input[type=button]:hover,
-		div.gform_wrapper .gform_page_footer input[type=submit]:hover {
+		div.gform_wrapper .gform_footer .gform_button:hover, 
+		div.gform_wrapper .gform_page_footer .button:hover {
 			<?php if( IBCustomizer::get_mod('gfs_button_hover_color') ) { ?>
 			color: <?php echo IBCustomizer::get_mod('gfs_button_hover_color'); ?>;
 			<?php } ?>
