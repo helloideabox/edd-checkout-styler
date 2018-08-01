@@ -2045,11 +2045,12 @@ function gfs_output_styles() {
 
 		div.gform_wrapper .gsection {
 			<?php if( IBCustomizer::get_mod('gfs_section_border_width') >= 0 ) { ?>
-			border-bottom-width: <?php echo IBCustomizer::get_mod('gfs_section_border_width'); ?>px;
+				border-bottom-width: <?php echo IBCustomizer::get_mod('gfs_section_border_width'); ?>px;
 			<?php } ?>
 			<?php if( IBCustomizer::get_mod('gfs_section_border_color') ) { ?>
-			border-bottom-color: <?php echo IBCustomizer::get_mod('gfs_section_border_color'); ?>;
+				border-bottom-color: <?php echo IBCustomizer::get_mod('gfs_section_border_color'); ?>;
 			<?php } ?>
+			margin-right: 0;
 			<?php if( IBCustomizer::get_mod('gfs_section_margin_bottom') >= 0 ) { ?>
 				margin-bottom: <?php echo IBCustomizer::get_mod('gfs_section_margin_bottom'); ?>px;
 			<?php } ?>
