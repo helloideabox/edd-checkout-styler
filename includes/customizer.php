@@ -913,6 +913,16 @@ function gfs_register_customizer() {
 									'unit'			=> 'px'
 								)
 		                    ),
+							'gfs_input_border_separator' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-line',
+									'class'			=> 'IBCustomizerControl',
+		                            'label'         => '',
+		                        ),
+							),
 							'gfs_input_border_width' => array(
 		                        'setting'    => array(
 									'default' => array(
@@ -1145,7 +1155,7 @@ function gfs_register_customizer() {
 									),
 		                        ),
 								'toggle'	=> array(
-									'yes'	=> array( 'gfs_radio_cb_size', 'gfs_radio_cb_color', 'gfs_radio_cb_checked_color', 'gfs_radio_cb_border_width', 'gfs_radio_cb_border_color', 'gfs_radio_cb_radius', 'gfs_radio_cb_checkbox_radius' )
+									'yes'	=> array( 'gfs_radio_cb_size', 'gfs_radio_cb_color', 'gfs_radio_cb_checked_color', 'gfs_radio_cb_border_separator', 'gfs_radio_cb_border_width', 'gfs_radio_cb_border_color', 'gfs_radio_cb_radius', 'gfs_radio_cb_checkbox_radius' )
 								)
 							),
 							'gfs_radio_cb_size' => array(
@@ -1194,6 +1204,16 @@ function gfs_register_customizer() {
 									'property'		=> 'background-color',
 								)
 		                    ),
+							'gfs_radio_cb_border_separator' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-line',
+									'class'			=> 'IBCustomizerControl',
+		                            'label'         => '',
+		                        ),
+							),
 							'gfs_radio_cb_border_width' => array(
 		                        'setting'    => array(
 		                            'default' => '1',
@@ -1314,6 +1334,16 @@ function gfs_register_customizer() {
 									'property'		=> 'color'
 								),
 		                    ),
+							'gfs_file_border_separator' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-line',
+									'class'			=> 'IBCustomizerControl',
+		                            'label'         => '',
+		                        ),
+							),
 							'gfs_file_border_width' => array(
 		                        'setting'    => array(
 		                            'default' => '',
@@ -1371,6 +1401,16 @@ function gfs_register_customizer() {
 									'selector'      => 'div.gform_wrapper .gfield input[type=file]',
 									'property'		=> 'border-style'
 								)
+							),
+							'gfs_file_padding_separator' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-line',
+									'class'			=> 'IBCustomizerControl',
+		                            'label'         => '',
+		                        ),
 							),
 							'gfs_file_padding' => array(
 		                        'setting'    => array(
