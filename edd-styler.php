@@ -1,11 +1,10 @@
 <?php
 /**
  * Plugin Name: Checkout Styler for Easy Digital Downloads
- * Plugin URI: http://ideaboxcreations.com/
  * Description: Provide Easy Digital Downloads styling options in customizer.
  * Version: 1.0.0
  * Author: IdeaBox Creations
- * Author URI: http://ideaboxcreations.com/
+ * Author URI: https://ideabox.io/
  * Copyright: (c) 2019 IdeaBox Creations
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
