@@ -3,9 +3,9 @@
  * WordPress Customizer Framework
  * Version 1.0.0
  *
- * Copyright (c) 2017 IdeaBox Creations
+ * Copyright (c) 2019 IdeaBox Creations
  */
-class IBCustomizer {
+class EDD_Checkout_Styler_Customizer {
 
     /**
 	 * An array of data used to render Customizer panels.
@@ -281,15 +281,15 @@ class IBCustomizer {
                 }
             ?>
 
-            var IBCustomizerToggles = <?php echo json_encode($toggles); ?>;
+            var EDD_Checkout_Styler_CustomizerToggles = <?php echo json_encode($toggles); ?>;
 
             /**
         	 * Helper class for the main Customizer interface.
         	 *
         	 * @since 1.0.0
-        	 * @class IBCustomizer
+        	 * @class EDD_Checkout_Styler_Customizer
         	 */
-            IBCustomizer = {
+            EDD_Checkout_Styler_Customizer = {
                 /**
         		 * Initializes our custom logic for the Customizer.
         		 *
@@ -298,8 +298,8 @@ class IBCustomizer {
         		 */
         		init: function()
         		{
-        			IBCustomizer._initToggles();
-                    IBCustomizer._initControls();
+        			EDD_Checkout_Styler_Customizer._initToggles();
+                    EDD_Checkout_Styler_Customizer._initControls();
         		},
 
                 /**
@@ -312,11 +312,11 @@ class IBCustomizer {
         		 */
         		_initToggles: function()
         		{
-                    if ( Object.keys( IBCustomizerToggles ).length < 1 ) {
+                    if ( Object.keys( EDD_Checkout_Styler_CustomizerToggles ).length < 1 ) {
                         return;
                     }
         			// Loop through each setting.
-        			$.each(IBCustomizerToggles, function( settingId, toggles ) {
+        			$.each(EDD_Checkout_Styler_CustomizerToggles, function( settingId, toggles ) {
 
         				// Get the setting object.
         				api( settingId, function( setting ) {
@@ -332,7 +332,7 @@ class IBCustomizer {
 
         								// Define the visibility callback.
         								var visibility = function( to ) {
-        									control.container.toggle( IBCustomizer._matchValues( to, toggle.value ) );
+        									control.container.toggle( EDD_Checkout_Styler_Customizer._matchValues( to, toggle.value ) );
         								};
 
         								// Init visibility.
@@ -352,14 +352,14 @@ class IBCustomizer {
                     // Initialize the slider control.
                     api.controlConstructor['ib-slider'] = api.Control.extend({
                         ready: function() {
-                            IBCustomizer._initSliderControl();
+                            EDD_Checkout_Styler_Customizer._initSliderControl();
                         }
                     });
 
                     // Initialize the multitext control.
                     api.controlConstructor['ib-multitext'] = api.Control.extend({
                         ready: function() {
-                            IBCustomizer._initMultitextControl();
+                            EDD_Checkout_Styler_Customizer._initMultitextControl();
                         }
                     });
                 },
@@ -434,7 +434,7 @@ class IBCustomizer {
                 }
             }
 
-            IBCustomizer.init();
+            EDD_Checkout_Styler_Customizer.init();
 
 
 
@@ -445,7 +445,7 @@ class IBCustomizer {
 
     static public function register( $customizer )
     {
-        require_once GFS_DIR . 'includes/class-ib-customizer-controls.php';
+        require_once EDD_Checkout_Styler_DIR . 'includes/class-edd-customizer-controls.php';
 
         $panel_priority = 1;
 
@@ -609,4 +609,4 @@ class IBCustomizer {
     }
 
 }
-IBCustomizer::init();
+EDD_Checkout_Styler_Customizer::init();

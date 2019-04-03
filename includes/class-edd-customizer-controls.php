@@ -5,7 +5,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
      *
      * @since 1.0.0
      */
-    final class IBCustomizerControl extends WP_Customize_Control {
+    final class EDD_Checkout_Styler_Customizer_Control extends WP_Customize_Control {
 
     	/**
     	 * Used to connect controls to each other.
