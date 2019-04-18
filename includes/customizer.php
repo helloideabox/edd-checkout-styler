@@ -1,6 +1,6 @@
 <?php
 
-require_once EDD_Checkout_Styler_DIR . 'includes/class-edd-customizer.php';
+require_once EDD_CHECKOUT_STYLER_DIR . 'includes/class-edd-customizer.php';
 
 add_action( 'after_setup_theme', 'edd_checkout_styler_register_customizer' );
 function edd_checkout_styler_register_customizer() {
@@ -200,7 +200,7 @@ function edd_checkout_styler_register_customizer() {
 		                        ),
 		                        'control'    => array(
 		                            'type'          => 'ib-slider',
-		                            'label'         => __( 'Font Size (px)', 'edd_checkout_styler' ),
+		                            'label'         => __( 'Header Font Size (px)', 'edd_checkout_styler' ),
 									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
 									'choices'            => array(
 		                                'min'                => 0,
@@ -215,6 +215,28 @@ function edd_checkout_styler_register_customizer() {
 									'unit'			=> 'px'
 								)
 		                    ),
+							'eddcs_table_header_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Header Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap legend',
+									'property'		=> 'font-weight',
+								)
+		                    ),
 							'eddcs_table_header_text_transform' => array(
 		                        'setting'    => array(
 		                            'default' => 'none',
@@ -222,7 +244,7 @@ function edd_checkout_styler_register_customizer() {
 		                        ),
 		                        'control'    => array(
 		                            'type'          => 'select',
-		                            'label'         => __( 'Text Transform', 'edd_checkout_styler' ),
+		                            'label'         => __( 'Header Text Transform', 'edd_checkout_styler' ),
 									'choices'		=> array(
 										'none'			=> __( 'None', 'edd_checkout_styler' ),
 										'lowercase'		=> __( 'lowercase', 'edd_checkout_styler' ),
@@ -243,7 +265,7 @@ function edd_checkout_styler_register_customizer() {
 		                        ),
 		                        'control'    => array(
 		                            'type'          => 'ib-slider',
-		                            'label'         => __( 'Letter Spacing (px)', 'edd_checkout_styler' ),
+		                            'label'         => __( 'Header Letter Spacing (px)', 'edd_checkout_styler' ),
 									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
 									'choices'            => array(
 		                                'min'                => -10,
@@ -478,6 +500,28 @@ function edd_checkout_styler_register_customizer() {
 									'selector'      => 'table#edd_checkout_cart .edd_cart_item td',
 									'property'		=> 'font-size',
 									'unit'			=> 'px'
+								)
+		                    ),
+							'eddcs_table_data_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Data Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'table#edd_checkout_cart .edd_cart_item td',
+									'property'		=> 'font-weight',
 								)
 		                    ),
 							'eddcs_table_data_text_transform' => array(
@@ -715,6 +759,28 @@ function edd_checkout_styler_register_customizer() {
 									'unit'			=> 'px'
 								)
 		                    ),
+							'eddcs_table_footer_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Footer Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'table#edd_checkout_cart .edd_cart_footer_row th',
+									'property'		=> 'font-weight',
+								)
+		                    ),
 							'eddcs_table_footer_text_transform' => array(
 		                        'setting'    => array(
 		                            'default' => 'none',
@@ -889,11 +955,11 @@ function edd_checkout_styler_register_customizer() {
 		                    ),
 						)
 					),
-					'eddcs_form_style'	=> array(
-						'title'			=> __( 'Form', 'edd_checkout_styler' ),
-						'description'	=> __( 'Customize forms text color, background color, add a background image.', 'edd_checkout_styler' ),
+					'eddcs_section_style'	=> array(
+						'title'			=> __( 'Section', 'edd_checkout_styler' ),
+						'description'	=> __( 'Customize sections text color, background color, add a background image.', 'edd_checkout_styler' ),
 						'fields'            => array(
-							'eddcs_form_bg_color' => array(
+							'eddcs_section_bg_color' => array(
 		                        'setting'    => array(
 		                            'default' => '',
 									'transport'    => 'postMessage'
@@ -908,7 +974,7 @@ function edd_checkout_styler_register_customizer() {
 									'property'      => 'background-color',
 								)
 		                    ),
-							'eddcs_form_padding' => array(
+							'eddcs_section_padding' => array(
 		                        'setting'    => array(
 									'default' => array(
 		                                'top'       => '',
@@ -955,7 +1021,7 @@ function edd_checkout_styler_register_customizer() {
 									)
 								)
 		                    ),
-							'eddcs_form_border_width' => array(
+							'eddcs_section_border_width' => array(
 		                        'setting'    => array(
 		                            'default' 		=> '',
 									'transport'    	=> 'postMessage'
@@ -977,7 +1043,7 @@ function edd_checkout_styler_register_customizer() {
 									'unit'			=> 'px'
 								)
 		                    ),
-							'eddcs_form_border_color' => array(
+							'eddcs_section_border_color' => array(
 		                        'setting'    => array(
 		                            'default' => '',
 									'transport'    => 'postMessage'
@@ -992,7 +1058,7 @@ function edd_checkout_styler_register_customizer() {
 									'property'      => 'border-color',
 								)
 		                    ),
-							'eddcs_form_border_radius' => array(
+							'eddcs_section_border_radius' => array(
 		                        'setting'    => array(
 		                            'default' => '',
 									'transport'    => 'postMessage'
@@ -1014,9 +1080,55 @@ function edd_checkout_styler_register_customizer() {
 									'unit'			=> 'px'
 								)
 		                    ),
+							'eddcs_section_margin_top' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Margin Top (px)', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 100,
+		                                'step'                 => 1
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap fieldset',
+									'property'		=> 'margin-top',
+									'unit'			=> 'px'
+								)
+		                    ),
+							'eddcs_section_margin_bottom' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Margin Bottom (px)', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 0,
+		                                'max'                => 100,
+		                                'step'                 => 1
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap fieldset',
+									'property'		=> 'margin-bottom',
+									'unit'			=> 'px'
+								)
+		                    ),
 						)
 					),
-					'eddcs_form_input_style'	=> array(
+					'eddcs_section_input_style'	=> array(
 						'title'	=> __( 'Inputs', 'edd_checkout_styler' ),
 						'description'	=> __( 'Style the input fields of a form by adding width, colors, border, padding and margins.', 'edd_checkout_styler' ),
 						'fields'	=> array(
@@ -1160,6 +1272,28 @@ function edd_checkout_styler_register_customizer() {
 									'selector'      => 'div#edd_checkout_form_wrap input.edd-input',
 									'property'		=> 'font-size',
 									'unit'			=> 'px'
+								)
+		                    ),
+							'eddcs_input_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap input.edd-input',
+									'property'		=> 'font-weight',
 								)
 		                    ),
 							'eddcs_input_border_separator' => array(
@@ -1327,7 +1461,6 @@ function edd_checkout_styler_register_customizer() {
 							'eddcs_input_description'      => array(
                                 'setting'    => array(
                                     'default' => 'no',
-									'transport'    => 'postMessage'
                                 ),
                                 'control'    => array(
                                     'type'              => 'select',
@@ -1364,6 +1497,28 @@ function edd_checkout_styler_register_customizer() {
 									'unit'			=> 'px'
 								)
 		                    ),
+							'eddcs_input_desc_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Description Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap span.edd-description',
+									'property'		=> 'font-weight',
+								)
+		                    ),
 							'eddcs_input_desc_color' => array(
 		                        'setting'    => array(
 		                            'default' => '',
@@ -1381,7 +1536,7 @@ function edd_checkout_styler_register_customizer() {
 		                    ),
 						)
 					),
-					'eddcs_form_button_style'	=> array(
+					'eddcs_section_button_style'	=> array(
 						'title'	=> __( 'Button', 'edd_checkout_styler' ),
 						'description'	=> __( 'Customize the form button with colors, border, even change the hover state colors.', 'edd_checkout_styler' ),
 						'fields'	=> array(
@@ -1493,6 +1648,28 @@ function edd_checkout_styler_register_customizer() {
 									'unit'			=> 'px'
 								)
 							),
+							'eddcs_button_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap .edd-submit',
+									'property'		=> 'font-weight',
+								)
+		                    ),
 							'eddcs_button_color' => array(
 		                        'setting'    => array(
 		                            'default' => '',
@@ -1673,7 +1850,7 @@ function edd_checkout_styler_register_customizer() {
 		                    ),
 						),
 					),
-					'eddcs_form_title_style'	=> array(
+					'eddcs_section_title_style'	=> array(
 						'title'	=> __( 'Title', 'edd_checkout_styler' ),
 						'description'	=> __( 'Style the title of a form by adding color, font size and alignment.', 'edd_checkout_styler' ),
 						'fields'	=> array(
@@ -1713,6 +1890,28 @@ function edd_checkout_styler_register_customizer() {
 									'selector'      => 'div#edd_checkout_form_wrap legend',
 									'property'		=> 'font-size',
 									'unit'			=> 'px',
+								)
+		                    ),
+							'eddcs_title_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap legend',
+									'property'		=> 'font-weight',
 								)
 		                    ),
 							'eddcs_title_text_transform' => array(
@@ -1760,7 +1959,7 @@ function edd_checkout_styler_register_customizer() {
 		                    ),
 						)
 					),
-					'eddcs_form_label_style'	=> array(
+					'eddcs_section_label_style'	=> array(
 						'title'	=> __( 'Labels', 'edd_checkout_styler' ),
 						'description'	=> __( 'Style the labels of a form by adding color, font size, text transform and letter spacing.', 'edd_checkout_styler' ),
 						'fields'	=> array(
@@ -1800,6 +1999,28 @@ function edd_checkout_styler_register_customizer() {
 									'selector'      => 'div#edd_checkout_form_wrap label',
 									'property'		=> 'font-size',
 									'unit'			=> 'px'
+								)
+		                    ),
+							'eddcs_label_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap label',
+									'property'		=> 'font-weight',
 								)
 		                    ),
 							'eddcs_label_text_transform' => array(
@@ -1902,6 +2123,75 @@ function edd_checkout_styler_register_customizer() {
 									'selector'      => 'div#edd_checkout_form_wrap #edd_final_total_wrap',
 									'property'		=> 'font-size',
 									'unit'			=> 'px'
+								)
+		                    ),
+							'eddcs_total_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div#edd_checkout_form_wrap #edd_final_total_wrap',
+									'property'		=> 'font-weight',
+								)
+		                    ),
+							'eddcs_total_padding' => array(
+		                        'setting'    => array(
+									'default' => array(
+		                                'top'       => '',
+		                                'bottom'    => '',
+		                                'left'      => '',
+		                                'right'     => ''
+		                            ),
+	                            	'transport'    => 'postMessage'
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-multitext',
+		                            'label'         => __( 'Padding (px)', 'edd_checkout_styler' ),
+		                            'class' 		=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'top'            => __( 'Top', 'edd_checkout_styler' ),
+		                                'bottom'         => __( 'Bottom', 'edd_checkout_styler' ),
+		                                'left'           => __( 'Left', 'edd_checkout_styler' ),
+		                                'right'          => __( 'Right', 'edd_checkout_styler' )
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'rules'			=> array(
+										'top' => array(
+											'selector'      => 'div#edd_checkout_form_wrap #edd_final_total_wrap',
+											'property'		=> 'padding-top',
+											'unit'			=> 'px'
+										),
+										'bottom' => array(
+											'selector'      => 'div#edd_checkout_form_wrap #edd_final_total_wrap',
+											'property'		=> 'padding-bottom',
+											'unit'			=> 'px'
+										),
+										'left' => array(
+											'selector'      => 'div#edd_checkout_form_wrap #edd_final_total_wrap',
+											'property'		=> 'padding-left',
+											'unit'			=> 'px'
+										),
+										'right' => array(
+											'selector'      => 'div#edd_checkout_form_wrap #edd_final_total_wrap',
+											'property'		=> 'padding-right',
+											'unit'			=> 'px'
+										),
+									)
 								)
 		                    ),
 							'eddcs_total_border_separator' => array(
@@ -2259,7 +2549,7 @@ function edd_checkout_styler_register_customizer() {
 		                    ),
 						),
 					),
-					'eddcs_form_errors_style'	=> array(
+					'eddcs_section_errors_style'	=> array(
 						'title'			=> __( 'Errors', 'edd_checkout_styler' ),
 						'description'	=> __( 'Customize the form errors with colors, border, even change the style of error fields.', 'edd_checkout_styler' ),
 						'fields'		=> array(
@@ -2425,6 +2715,28 @@ function edd_checkout_styler_register_customizer() {
 									'unit'			=> 'px',
 								),
 		                    ),
+							'eddcs_error_font_weight' => array(
+		                        'setting'    => array(
+		                            'default' => '',
+									'transport'    => 'postMessage',
+									'sanitize_callback' => 'edd_checkout_styler_sanitize_integer',
+		                        ),
+		                        'control'    => array(
+		                            'type'          => 'ib-slider',
+		                            'label'         => __( 'Font Weight', 'edd_checkout_styler' ),
+									'class'			=> 'EDD_Checkout_Styler_Customizer_Control',
+									'choices'            => array(
+		                                'min'                => 100,
+		                                'max'                => 900,
+		                                'step'                 => 100,
+		                            ),
+		                        ),
+								'preview'       => array(
+									'type'          => 'css',
+									'selector'      => 'div.edd-alert-error',
+									'property'		=> 'font-weight',
+								)
+		                    ),
 						),
 					),
 				),
@@ -2442,13 +2754,14 @@ function edd_checkout_styler_output_styles() {
 	$td_padding			= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_data_padding', true );
 	$tf_border			= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_border_width', true );
 	$tf_padding			= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_padding', true );
-	$form_padding 		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_padding', true );
+	$form_padding 		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_padding', true );
 	$input_padding		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_inputs_padding', true );
 	$input_border		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_border_width', true );
 	$button_padding		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_button_padding', true );
 	$error_padding		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_error_padding', true );
 	$login_padding		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_login_padding', true );
 	$discount_padding	= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_discount_padding', true );
+	$total_padding		= EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_padding', true );
 	?>
 	<style type="text/css">
 		div#edd_checkout_form_wrap #edd-login-account-wrap,
@@ -2457,8 +2770,13 @@ function edd_checkout_styler_output_styles() {
 			margin-left: 0;
 			margin-right: 0;
 		}
+		div#edd_checkout_form_wrap legend {
+			margin-bottom: 15px;
+		}
 		div#edd_checkout_form_wrap #edd_payment_mode_select legend {
+			<?php if ( $form_padding['top'] != '' && $form_padding['top'] > 0 ) { ?>
 			margin-bottom: 0;
+			<?php } ?>
 		} 
 		div#edd_checkout_wrap {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_container_width' ) >= 0 ) { ?>
@@ -2501,6 +2819,9 @@ function edd_checkout_styler_output_styles() {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_header_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_header_font_size' ); ?>px;
 			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_header_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_header_font_weight' ); ?>;
+			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_header_alignment' ) ) { ?>
 				text-align: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_header_alignment' ); ?>;
 			<?php } ?>
@@ -2542,6 +2863,9 @@ function edd_checkout_styler_output_styles() {
 		table#edd_checkout_cart .edd_cart_item td {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_data_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_data_font_size' ); ?>px;
+			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_data_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_data_font_weight' ); ?>;
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_data_alignment' ) ) { ?>
 				text-align: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_data_alignment' ); ?>;
@@ -2609,6 +2933,9 @@ function edd_checkout_styler_output_styles() {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_font_size' ); ?>px;
 			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_font_weight' ); ?>;
+			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_alignment' ) ) { ?>
 				text-align: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_table_footer_alignment' ); ?>;
 			<?php } ?>
@@ -2648,8 +2975,8 @@ function edd_checkout_styler_output_styles() {
 		}
 
 		div#edd_checkout_form_wrap fieldset:first-child {
-			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_bg_color' ) ) { ?>
-				background-color: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_bg_color' ); ?>;
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_bg_color' ) ) { ?>
+				background-color: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_bg_color' ); ?>;
 			<?php } ?>
 			<?php if ( $form_padding['top'] >= 0 ) { ?>
 				padding-top: <?php echo $form_padding['top']; ?>px;
@@ -2663,18 +2990,26 @@ function edd_checkout_styler_output_styles() {
 			<?php if ( $form_padding['right'] >= 0 ) { ?>
 				padding-right: <?php echo $form_padding['right']; ?>px;
 			<?php } ?>
-			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_border_width' ) >= 0 ) { ?>
-				border-width: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_border_width' ); ?>px;
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_border_width' ) >= 0 ) { ?>
+				border-width: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_border_width' ); ?>px;
 			<?php } ?>
-			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_border_color' ) ) { ?>
-				border-color: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_border_color' ); ?>;
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_border_color' ) ) { ?>
+				border-color: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_border_color' ); ?>;
 			<?php } ?>
-			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_border_radius' ) >= 0 ) { ?>
-				border-radius: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_form_border_radius' ); ?>px;
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_border_radius' ) >= 0 ) { ?>
+				border-radius: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_border_radius' ); ?>px;
+			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_margin_top' ) >= 0 ) { ?>
+				margin-top: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_margin_top' ); ?>px;
+			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_margin_bottom' ) >= 0 ) { ?>
+				margin-bottom: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_section_margin_bottom' ); ?>px;
 			<?php } ?>
 		}
 		body.logged-in div#edd_checkout_form_wrap legend {
+			<?php if ( $form_padding['top'] != '' && $form_padding['top'] > 0 ) { ?>
 			margin-bottom: 0;
+			<?php } ?>
 		}
 		div#edd_checkout_form_wrap legend {
 			display: inherit;
@@ -2685,6 +3020,9 @@ function edd_checkout_styler_output_styles() {
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_title_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_title_font_size' ); ?>px;
+			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_title_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_title_font_weight' ); ?>;
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_title_text_transform' ) ) { ?>
 				text-transform: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_title_text_transform' ); ?>;
@@ -2699,6 +3037,9 @@ function edd_checkout_styler_output_styles() {
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_label_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_label_font_size' ); ?>px;
+			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_label_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_label_font_weight' ); ?>;
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_label_text_transform' ) ) { ?>
 				text-transform: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_label_text_transform' ); ?>;
@@ -2737,8 +3078,11 @@ function edd_checkout_styler_output_styles() {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_font_size' ); ?>px;
 			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_font_weight' ); ?>;
+			<?php } ?>
 			<?php if ( $input_border['top'] >= 0 ) { ?>
-				qborder-top-width: <?php echo $input_border['top']; ?>px;
+				border-top-width: <?php echo $input_border['top']; ?>px;
 			<?php } ?>
 			<?php if ( $input_border['bottom'] >= 0 ) { ?>
 				border-bottom-width: <?php echo $input_border['bottom']; ?>px;
@@ -2756,6 +3100,7 @@ function edd_checkout_styler_output_styles() {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_border_radius' ) >= 0 ) { ?>
 				border-radius: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_border_radius' ); ?>px;
 			<?php } ?>
+			height: auto;
 		}
 
 		div#edd_checkout_form_wrap input.edd-input.required {
@@ -2796,6 +3141,9 @@ function edd_checkout_styler_output_styles() {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_desc_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_desc_font_size' ); ?>px;
 			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_desc_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_desc_font_weight' ); ?>;
+			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_desc_color' ) ) { ?>
 				color: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_input_desc_color' ); ?>;
 			<?php } ?>
@@ -2812,6 +3160,9 @@ function edd_checkout_styler_output_styles() {
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_font_size' ); ?>px;
 			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_font_weight' ); ?>;
+			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_border_width' ) >= 0 ) { ?>
 				border-width: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_border_width' ); ?>px;
 			<?php } ?>
@@ -2820,6 +3171,18 @@ function edd_checkout_styler_output_styles() {
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_border_radius' ) >= 0 ) { ?>
 				border-radius: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_total_border_radius' ); ?>px;
+			<?php } ?>
+			<?php if ( $total_padding['top'] >= 0 ) { ?>
+				padding-top: <?php echo $total_padding['top']; ?>px;
+			<?php } ?>
+			<?php if ( $total_padding['bottom'] >= 0 ) { ?>
+				padding-bottom: <?php echo $total_padding['bottom']; ?>px;
+			<?php } ?>
+			<?php if ( $total_padding['left'] >= 0 ) { ?>
+				padding-left: <?php echo $total_padding['left']; ?>px;
+			<?php } ?>
+			<?php if ( $total_padding['right'] >= 0 ) { ?>
+				padding-right: <?php echo $total_padding['right']; ?>px;
 			<?php } ?>
 		}
 
@@ -2837,6 +3200,9 @@ function edd_checkout_styler_output_styles() {
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_button_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_button_font_size' ); ?>px;
+			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_button_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_button_font_weight' ); ?>;
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_button_text_transform' ) ) { ?>
 				text-transform: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_button_text_transform' ); ?>;
@@ -2985,6 +3351,9 @@ function edd_checkout_styler_output_styles() {
 			<?php } ?>
 			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_error_font_size' ) ) { ?>
 				font-size: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_error_font_size' ); ?>px;
+			<?php } ?>
+			<?php if ( EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_error_font_weight' ) ) { ?>
+				font-weight: <?php echo EDD_Checkout_Styler_Customizer::get_mod( 'eddcs_error_font_weight' ); ?>;
 			<?php } ?>
 		}
 	</style>

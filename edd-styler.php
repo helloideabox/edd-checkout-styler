@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EDD_Checkout_Styler_DIR', plugin_dir_path( __FILE__ ) );
+define( 'EDD_CHECKOUT_STYLER_DIR', plugin_dir_path( __FILE__ ) );
 
 if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 	require_once 'includes/customizer.php';

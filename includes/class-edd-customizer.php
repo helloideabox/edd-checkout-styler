@@ -53,6 +53,11 @@ class EDD_Checkout_Styler_Customizer {
 	 */
 	static private $_is_preview = false;
 
+ 	/**
+	 * Initializes the class.
+	 *
+	 * @since 1.0.0
+	 */
     static public function init()
     {
         add_action( 'customize_preview_init',                    __CLASS__ . '::preview_init' );
@@ -99,6 +104,11 @@ class EDD_Checkout_Styler_Customizer {
         wp_enqueue_script( 'customize-preview' );
     }
 
+	/**
+	 * Build script for Customizer preview.
+	 *
+	 * @since 1.0.0
+	 */
     static public function print_preview_script()
     {
         if ( self::$_is_preview ) :
@@ -159,6 +169,11 @@ class EDD_Checkout_Styler_Customizer {
         endif;
     }
 
+	/**
+	 * Customizer custom controls style.
+	 *
+	 * @since 1.0.0
+	 */
     static public function controls_print_styles()
     {
         ?>
@@ -259,6 +274,11 @@ class EDD_Checkout_Styler_Customizer {
         <?php
     }
 
+	/**
+	 * Customizer custom controls JS.
+	 *
+	 * @since 1.0.0
+	 */
     static public function controls_print_footer_scripts()
     {
         ?>
@@ -443,9 +463,14 @@ class EDD_Checkout_Styler_Customizer {
         <?php
     }
 
+	/**
+	 * Registers custom controls.
+	 *
+	 * @since 1.0.0
+	 */
     static public function register( $customizer )
     {
-        require_once EDD_Checkout_Styler_DIR . 'includes/class-edd-customizer-controls.php';
+        require_once EDD_CHECKOUT_STYLER_DIR . 'includes/class-edd-customizer-controls.php';
 
         $panel_priority = 1;
 
@@ -468,6 +493,12 @@ class EDD_Checkout_Styler_Customizer {
         }
     }
 
+	/**
+	 * Registers custom controls.
+	 *
+	 * @access private
+	 * @since 1.0.0
+	 */
     static private function _register_sections( $panel_key = '', $data, $customizer )
     {
         $section_priority   = 1;
